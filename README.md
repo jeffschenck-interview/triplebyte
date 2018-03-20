@@ -1,6 +1,4 @@
-# triplebyte
-
-> A Vue.js project
+# TripleByte Interview
 
 ## Build Setup
 
