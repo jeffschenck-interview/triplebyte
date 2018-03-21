@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import interviews from '@/store/interviews'
+import createPersistedState from 'vuex-persistedstate'
+import tasks from '@/store/tasks'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   strict: true,
   modules: {
-    interviews,
+    tasks,
   },
+  plugins: [
+    createPersistedState(),
+  ],
 })

@@ -9,8 +9,16 @@
     </section>
     <section class="section">
       <div class="container">
-        <p>Am I hired yet? <strong>{{ isHired ? 'Yes' : 'No' }}</strong></p>
-        <p><button class="button is-primary" @click="hire()">Hire Me</button></p>
+        <div class="columns">
+          <column
+            v-for="(column, index) in columns"
+            :key="column.id"
+            :column="column"
+            :first-column="index === 0"
+            :last-column="index === columns.length - 1"
+            @addcard="addCardToColumn($event)"
+          />
+        </div>
       </div>
     </section>
   </div>
@@ -18,16 +26,15 @@
 
 <script>
 import { mapState } from 'vuex'
+import Column from '@/components/Column'
 
 export default {
   name: 'Home',
-  computed: {
-    ...mapState('interviews', ['isHired']),
+  components: {
+    Column,
   },
-  methods: {
-    hire () {
-      this.$store.dispatch('interviews/updateIsHired', true)
-    },
+  computed: {
+    ...mapState('tasks', ['columns']),
   },
 }
 </script>
